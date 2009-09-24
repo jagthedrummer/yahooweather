@@ -232,25 +232,33 @@ module YahooWeather
       @request_location = request_location
       @request_url = request_url
 
-      root = payload['channel'].first
-      @astronomy = YahooWeather::Astronomy.new root['astronomy'].first
-      @location = YahooWeather::Location.new root['location'].first
-      @units = YahooWeather::Units.new root['units'].first
-      @wind = YahooWeather::Wind.new root['wind'].first
-      @atmosphere = YahooWeather::Atmosphere.new root['atmosphere'].first
+      
+      #puts payload['rss']['channel']
+      
+      root = payload['rss']['channel']
+      
+      #puts root.to_yaml
+      
+      @astronomy = YahooWeather::Astronomy.new root['astronomy']
+      @location = YahooWeather::Location.new root['location']
+      @units = YahooWeather::Units.new root['units']
+      @wind = YahooWeather::Wind.new root['wind']
+      @atmosphere = YahooWeather::Atmosphere.new root['atmosphere']
 
-      item = root['item'].first
-      @condition = YahooWeather::Condition.new item['condition'].first
+      item = root['item']
+      @condition = YahooWeather::Condition.new item['condition']
       @forecasts = []
       item['forecast'].each { |forecast| @forecasts << YahooWeather::Forecast.new(forecast) }
-      @latitude = item['lat'].first.to_f
-      @longitude = item['long'].first.to_f
-      @page_url = item['link'].first
-      @title = item['title'].first
-      @description = item['description'].first
+      @latitude = item['lat'].to_f
+      @longitude = item['long'].to_f
+      @page_url = item['link']
+      @title = item['title']
+      @description = item['description']
+  
+      #puts "description .class = #{@description.to_yaml}"
 
-      match_data = @@REGEXP_IMAGE.match(description)
-      @image_url = (match_data) ? match_data[1] : nil
+      #match_data = @@REGEXP_IMAGE.match(description)
+      @image_url = root['image']['url']#(match_data) ? match_data[1] : nil
     end
   end
 
@@ -277,6 +285,7 @@ module YahooWeather
     def lookup_location (location, units = 'f')
       # query the service to grab the xml data
       url = _request_url(location, units)
+      #puts url
       begin
          response = Net::HTTP.get_response(URI.parse(url)).body.to_s
       rescue

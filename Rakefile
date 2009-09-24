@@ -4,6 +4,23 @@ require 'rake/testtask'
 require 'rake/rdoctask'
 require 'rake/gempackagetask'
 
+begin
+  require 'jeweler'
+  Jeweler::Tasks.new do |gemspec|
+    gemspec.name = "yahooweather"
+    gemspec.summary = "Update to yahooweather gem to use FasterXMLSimple style parsing"
+    gemspec.description = "Update to yahooweather gem to use FasterXMLSimple style parsing"
+    gemspec.email = "jagthedrummer@gmail.com"
+    gemspec.homepage = "http://github.com/jagthedrummer/yahooweather"
+    gemspec.description = "TODO"
+    gemspec.authors = ["Walter Korman","Jeremy Green"]
+  end
+rescue LoadError
+  puts "Jeweler not available. Install it with: sudo gem install technicalpickles-jeweler -s http://gems.github.com"
+end
+
+
+
 spec = Gem::Specification.new do |s|
   s.name = 'yahoo-weather'
   s.version = '1.0.0'
