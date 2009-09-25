@@ -3,9 +3,9 @@ Manifest.txt
 PostInstall.txt
 README.rdoc
 Rakefile
-lib/yahooweather.rb
+lib/yahoo-weather.rb
 script/console
 script/destroy
 script/generate
-test/test_helper.rb
-test/test_yahooweather.rb
+test/test_api.rb
+

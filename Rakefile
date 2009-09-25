@@ -7,9 +7,9 @@ require 'rake/gempackagetask'
 begin
   require 'jeweler'
   Jeweler::Tasks.new do |gemspec|
-    gemspec.name = "yahooweather"
-    gemspec.summary = "Update to yahooweather gem to use FasterXMLSimple style parsing"
-    gemspec.description = "Update to yahooweather gem to use FasterXMLSimple style parsing"
+    gemspec.name = "yahoow-eather"
+    gemspec.summary = "Update to yahoo-weather gem to use FasterXMLSimple style parsing"
+    gemspec.description = "Update to yahoo-weather gem to use FasterXMLSimple style parsing"
     gemspec.email = "jagthedrummer@gmail.com"
     gemspec.homepage = "http://github.com/jagthedrummer/yahooweather"
     gemspec.description = "TODO"
