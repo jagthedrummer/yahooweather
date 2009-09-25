@@ -20,6 +20,7 @@ require 'pp'
 require 'time'
 require 'xmlsimple'
 
+
 module YahooWeather
 
   # Describes astronomy information for a particular location.

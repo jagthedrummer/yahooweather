@@ -1,7 +1,7 @@
 require 'rubygems'
 require 'test/unit'
 require 'yahoo-weather'
-require 'aws/s3' #for trying to find parsing incompatiability
+require 'faster_xml_simple'
 
 class TestAPI < Test::Unit::TestCase
   def setup
