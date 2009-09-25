@@ -256,10 +256,16 @@ module YahooWeather
       @title = item['title']
       @description = item['description']
   
-      #puts "description .class = #{@description.to_yaml}"
+      puts "description = #{@description.to_yaml}"
 
-      #match_data = @@REGEXP_IMAGE.match(description)
-      @image_url = root['image']['url']#(match_data) ? match_data[1] : nil
+      puts "description.class = #{@description.class.to_s}"
+
+      match_data = @@REGEXP_IMAGE.match(description)
+      @image_url = (match_data) ? match_data[1] : nil
+      
+      puts "@image_url = #{@image_url}"
+      
+      #@image_url = root['image']['url']#(match_data) ? match_data[1] : nil
     end
   end
 
@@ -293,8 +299,17 @@ module YahooWeather
         raise "failed to get weather via '#{url}': " + $!
       end
 
+      puts response
+      puts " ---------------------------- "
+      puts " ---------------------------- "
+      puts " ---------------------------- "
+      
+
       # create the response object
       response = XmlSimple.xml_in(response)
+      
+      puts response.to_yaml
+      
       YahooWeather::Response.new(location, url, response)
     end
   
